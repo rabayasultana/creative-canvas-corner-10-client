@@ -8,6 +8,8 @@ import Root from "../layouts/Root.jsx";
 import Home from "../Pages/Home.jsx";
 import MyCraftList from "../Pages/MyCraftList.jsx";
 import AllCraftItem from "../Pages/AllCraftItem.jsx";
+import Login from "../Pages/Login.jsx";
+import Register from "../Pages/Register.jsx";
   
   const router = createBrowserRouter([
   
@@ -20,6 +22,14 @@ import AllCraftItem from "../Pages/AllCraftItem.jsx";
             path: "/",
             element: <Home></Home>,
             loader: () => fetch('http://localhost:5000/craftItem')
+        },
+        {
+            path: "/login",
+            element: <Login></Login>
+        },
+        {
+            path: "/register",
+            element: <Register></Register>
         },
     {
       path: "addCraftItem",

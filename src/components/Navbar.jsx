@@ -1,35 +1,35 @@
-// import { useContext } from "react";
-import { NavLink } from "react-router-dom";
-// import { AuthContext } from "../../../providers/AuthProvider";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 const Navbar = () => {
-//   const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-//   const handleLogOut = () => {
-//     logOut().then().catch();
-//   };
+  const handleLogOut = () => {
+    logOut().then().catch();
+  };
 
   const navLinks = (
     <>
-      <li className="font-bold text-pink-900">
+      <li className="font-bold">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="font-bold text-pink-900">
+      <li className="font-bold">
         <NavLink to="/allArtCraft">All Art And Craft Items</NavLink>
       </li>
 
-      <li className="font-bold text-pink-900">
+      <li className="font-bold">
         <NavLink to="/addCraftItem">Add Craft Item</NavLink>
       </li>
-      <li className="font-bold text-pink-900">
+      <li className="font-bold">
         <NavLink to="/myArtCraft">My Art And Craft List</NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="animate__animated animate__pulse">
-      <div className="navbar bg-base-100">
+    <div className="mb-10 h-[120px] border pt-4">
+      <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -55,10 +55,10 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-2xl  text-green-900 font-bold">
-            <div>
-                <span className="md:text-5xl mr-2">Creative</span> 
-            <span>Canvas Corner</span>
+          <a className="btn btn-ghost text-2xl  text-[#8F3034] font-bold">
+            <div className="flex flex-col">
+              <span className="md:text-5xl mr-2">Creative</span>
+              <span>Canvas Corner</span>
             </div>
           </a>
         </div>
@@ -66,42 +66,51 @@ const Navbar = () => {
           <ul className="menu menu-horizontal">{navLinks}</ul>
         </div>
 
-        <div>
-            <button className="btn btn-primary">Login</button>
-            <button className="btn btn-primary">Register</button>
-        </div>
 
-        {/* <div className="navbar-end">
-
+        <div className="navbar-end">
           {user ? (
             <div className="flex items-center">
               <div className="relative group">
-              <Link to='/update'><img
-                className="h-16 rounded-full"
-                src={user?.photoURL || "https://imgbb.host/images/DfdvE.png"}
-                alt=""
-              /></Link>
-              <span className="absolute  opacity-0 group-hover:opacity-100 px-2 py-1 text-xl">
-                {user?.displayName}
-              </span>
+                <Link to="/update">
+                  <img
+                    className="h-16 rounded-full"
+                    src={
+                      user?.photoURL || "https://imgbb.host/images/DfdvE.png"
+                    }
+                    alt=""
+                  />
+                </Link>
+                <span className="absolute  opacity-0 group-hover:opacity-100 px-2 py-1 text-xl">
+                  {user?.displayName}
+                </span>
               </div>
-              <button onClick={handleLogOut} className="btn text-2xl bg-[#043e32] text-white ml-1">
+              <button
+                onClick={handleLogOut}
+                className="btn text-2xl bg-[#8F3034] text-white ml-1"
+              >
                 Logout
               </button>
             </div>
           ) : (
             <div className="flex items-center">
-              <img
+              {/* <img
                 className="h-16"
                 src="https://imgbb.host/images/DfdvE.png"
                 alt=""
-              />
+              /> */}
               <NavLink to="/login">
-                <button className="btn bg-[#043e32] text-2xl text-white ml-1">Login</button>
+                <button className="btn bg-[#8F3034] text-xl text-white ml-1">
+                  Login
+                </button>
+              </NavLink>
+              <NavLink to="/register">
+                <button className="btn bg-[#8F3034] text-xl text-white ml-1">
+                  Register
+                </button>
               </NavLink>
             </div>
           )}
-        </div> */}
+        </div>
       </div>
     </div>
   );
