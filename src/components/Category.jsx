@@ -9,6 +9,7 @@ const Category = () => {
       // Fetch subcategories from your backend API
       fetch('http://localhost:5000/category') // Replace with your API endpoint
         .then(res => res.json())
+        
         .then(data => setSubcategories(data))
         .catch(error => console.error(error));
     }, []);
