@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import CraftItemCard from "../components/CraftItemCard";
 import Navbar from "../components/Navbar";
 import Banner from "../components/Banner";
+import Footer from "../components/Footer";
 
 const Home = () => {
     
@@ -19,6 +20,7 @@ const Home = () => {
             }
             </div>
         </div>
+        <Footer></Footer>
         </div>
     );
 };

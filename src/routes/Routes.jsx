@@ -12,6 +12,7 @@ import Login from "../Pages/Login.jsx";
 import Register from "../Pages/Register.jsx";
 import PrivateRoute from "./PrivateRoutes.jsx";
 import CraftItemDetails from "../Pages/CraftItemDetails.jsx";
+import Contact from "../Pages/Contact.jsx";
   
   const router = createBrowserRouter([
   
@@ -39,7 +40,7 @@ import CraftItemDetails from "../Pages/CraftItemDetails.jsx";
     },
     {
       path: "/updateCraftItem/:id",
-      element: <UpdateCraftItem></UpdateCraftItem>,
+      element: <PrivateRoute><UpdateCraftItem></UpdateCraftItem></PrivateRoute>,
       loader: ({params}) => fetch(`http://localhost:5000/craftItem/${params.id}`)
 
     },
@@ -57,6 +58,10 @@ import CraftItemDetails from "../Pages/CraftItemDetails.jsx";
         element: <PrivateRoute><CraftItemDetails></CraftItemDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/craftItem/${params.id}`)
         
+    },
+    {
+      path: "/contact",
+      element: <Contact></Contact>
     }
   ]
 },

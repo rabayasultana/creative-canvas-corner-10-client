@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 
 const AllCraftItem = () => {
@@ -38,6 +39,7 @@ const AllCraftItem = () => {
     </tbody>
   </table>
 </div>
+<Footer></Footer>
         </div>
     );
 };
