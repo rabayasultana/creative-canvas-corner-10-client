@@ -7,9 +7,9 @@ const CraftItemCard = ({ craftItem }) => {
 
   return (
 
-      <div className="card bg-base-100 shadow-xl mt-16">
+      <div className="card bg-red-50 shadow-xl mt-16">
         <figure>
-          <img className="lg:h-[300px] lg:w-[300px]"
+          <img className="md:h-[300px] md:w-[300px]"
             src={photo} 
             alt="paint"
           />

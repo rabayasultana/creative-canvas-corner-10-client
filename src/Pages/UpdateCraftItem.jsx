@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Swal from "sweetalert2";
+import Footer from "../components/Footer";
 
 
 const UpdateCraftItem = () => {
@@ -49,8 +50,9 @@ const UpdateCraftItem = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="bg-[#F4F3F0]">
-      <h2 className="text-3xl font-extrabold mb-8">Update Craft Item: {craftName}</h2>
+            <h2 className="text-5xl text-center font-bold mb-8">Update Craft Item: {craftName}</h2>
+            <div className="bg-red-50 p-16 mb-10 w-3/4 mx-auto">
+      
 
       <form onSubmit={handleUpdateCraftItem} className="space-y-2">
 
@@ -200,9 +202,10 @@ const UpdateCraftItem = () => {
           </label>
 
         </div>
-        <input type="submit" value="Update Craft Item"  className="btn btn-primary w-full" />
+       <div className="w-1/2 mx-auto"> <input type="submit" value="Update Craft Item"  className="btn w-full bg-[#8F3034] text-white" /></div>
       </form>
     </div>
+    <Footer></Footer>
         </div>
     );
 };

@@ -64,8 +64,9 @@ const AddCraftItem = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="bg-[#F4F3F0]">
-        <h2 className="text-3xl font-extrabold mb-8">Add Craft Item</h2>
+      <h2 className="text-5xl text-center font-bold mb-8">Add Craft Item</h2>
+      <div className="bg-red-50 p-16 mb-10 w-3/4 mx-auto">
+     
 
         <form onSubmit={handleAddCraftItem} className="space-y-2">
           {/* Form email and name row */}
@@ -238,11 +239,13 @@ const AddCraftItem = () => {
               <div className="label"></div>
             </label>
           </div>
-          <input
+         <div className="w-1/2 mx-auto">
+         <input
             type="submit"
             value="Add Craft Item"
-            className="btn btn-primary w-full"
+            className="btn w-full bg-[#8F3034] text-white"
           />
+         </div>
         </form>
       </div>
       <Footer></Footer>
