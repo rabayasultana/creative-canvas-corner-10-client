@@ -7,9 +7,9 @@ const CraftItemCard = ({ craftItem }) => {
 
   return (
 
-      <div className="card bg-base-100 shadow-xl">
+      <div className="card bg-base-100 shadow-xl mt-16">
         <figure>
-          <img
+          <img className="lg:h-[300px] lg:w-[300px]"
             src={photo} 
             alt="paint"
           />
@@ -19,10 +19,10 @@ const CraftItemCard = ({ craftItem }) => {
             <div className="badge badge-secondary">{subCategory}</div>
           </h2>
           <p>{description}</p>
-          <p>{price}</p>
+          <p>Price: {price} tk</p>
           <div className="grid md:grid-cols-3 items-center ">
-            <div className="badge badge-outline">stockStatus</div>
-            <div className="badge badge-outline">{rating}</div>
+            <div className="badge badge-outline">{stockStatus}</div>
+            <div className="badge badge-outline">Rating:{rating}</div>
             <div className="card-actions justify-end">
           <Link to={`craftItemDetails/${_id}`}>
             <button className="btn bg-[#8F3034] text-white">
