@@ -2,6 +2,7 @@ import Swal from 'sweetalert2'
 import Navbar from '../components/Navbar';
 import { useContext } from 'react';
 import { AuthContext } from '../components/AuthProvider';
+import Footer from '../components/Footer';
 
 
 const AddCraftItem = () => {
@@ -167,12 +168,22 @@ const AddCraftItem = () => {
             <div className="label">
               <span className="label-text">Stock Status</span>
             </div>
-            <input
+            {/* <input
               type="text"
               name="stockStatus"
               placeholder="Type here"
               className="input input-bordered w-full"
-            />
+            /> */}
+            <select
+            className="input input-bordered w-full"
+            id="" 
+            name="stockStatus" 
+            placeholder="Type here"
+          >
+            <option value="">Select</option>
+            <option value="yes">In stock</option>
+            <option value="no">Made to Order</option>
+          </select>
             <div className="label"></div>
           </label>
         </div>
@@ -183,12 +194,23 @@ const AddCraftItem = () => {
             <div className="label">
               <span className="label-text">Customization</span>
             </div>
-            <input
+            {/* <input
               type="text"
               name="customization"
               placeholder="Type here"
               className="input input-bordered w-full"
-            />
+            /> */}
+
+<select
+            className="input input-bordered w-full"
+            id="customization" 
+            name="customization" 
+            placeholder="Type here"
+          >
+            <option value="">Select</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
             <div className="label"></div>
           </label>
 
@@ -225,6 +247,7 @@ const AddCraftItem = () => {
         <input type="submit" value="Add Craft Item"  className="btn btn-primary w-full" />
       </form>
     </div>
+    <Footer></Footer>
 </div>
   );
 };

@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { AuthContext } from "../components/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import Footer from "../components/Footer";
 
 const MyCraftList = () => {
     const { user } = useContext(AuthContext) || {};
@@ -94,6 +95,7 @@ fetch(`http://localhost:5000/delete/${id}`,{
       }
     </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
