@@ -10,6 +10,8 @@ import MyCraftList from "../Pages/MyCraftList.jsx";
 import AllCraftItem from "../Pages/AllCraftItem.jsx";
 import Login from "../Pages/Login.jsx";
 import Register from "../Pages/Register.jsx";
+import PrivateRoute from "./PrivateRoutes.jsx";
+import CraftItemDetails from "../Pages/CraftItemDetails.jsx";
   
   const router = createBrowserRouter([
   
@@ -32,23 +34,29 @@ import Register from "../Pages/Register.jsx";
             element: <Register></Register>
         },
     {
-      path: "addCraftItem",
-      element: <AddCraftItem></AddCraftItem>
+      path: "/addCraftItem",
+      element: <PrivateRoute><AddCraftItem></AddCraftItem></PrivateRoute>
     },
     {
-      path: "updateCraftItem/:id",
+      path: "/updateCraftItem/:id",
       element: <UpdateCraftItem></UpdateCraftItem>,
       loader: ({params}) => fetch(`http://localhost:5000/craftItem/${params.id}`)
 
     },
     {
-      path: "myArtCraft",
-      element: <MyCraftList></MyCraftList>
+      path: "/myArtCraft",
+      element: <PrivateRoute><MyCraftList></MyCraftList></PrivateRoute>
     },
     {
-      path: "allArtCraft",
+      path: "/allArtCraft",
       element: <AllCraftItem></AllCraftItem>,
       loader: () => fetch('http://localhost:5000/craftItem')
+    },
+    {
+        path: "craftItemDetails/:id",
+        element: <PrivateRoute><CraftItemDetails></CraftItemDetails></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/craftItem/${params.id}`)
+        
     }
   ]
 },

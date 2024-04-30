@@ -1,13 +1,21 @@
 import Swal from 'sweetalert2'
 import Navbar from '../components/Navbar';
+import { useContext } from 'react';
+import { AuthContext } from '../components/AuthProvider';
+
 
 const AddCraftItem = () => {
+  const { user } = useContext(AuthContext) || {};
     const handleAddCraftItem = event => {
         event.preventDefault();
+        console.log(user.displayName);
+
+        
         const form = event.target;
 
-        const userName = form.name.value;
-        const userEmail = form.email.value;
+        const userName = user.displayName;
+        const email = user.email;
+
         const craftName = form.craftName.value;
         const price = form.price.value;
         const subCategory = form.subCategory.value;
@@ -18,7 +26,7 @@ const AddCraftItem = () => {
         const rating = form.rating.value;
         const photo = form.photo.value;
 
-        const newCraftItem = {userName, userEmail, craftName,  price, subCategory, description, processingTime , stockStatus, customization, rating, photo}
+        const newCraftItem = {userName, email, craftName,  price, subCategory, description, processingTime , stockStatus, customization, rating, photo}
         console.log(newCraftItem);
 
         // send data to the server
@@ -48,7 +56,7 @@ const AddCraftItem = () => {
 <div>
   <Navbar></Navbar>
 <div className="bg-[#F4F3F0]">
-      <h2 className="text-3xl font-extrabold mb-8">Add craftitem</h2>
+      <h2 className="text-3xl font-extrabold mb-8">Add Craft Item</h2>
 
       <form onSubmit={handleAddCraftItem} className="space-y-2">
         {/* Form email and name row */}
@@ -60,7 +68,9 @@ const AddCraftItem = () => {
             <input
               type="text"
               name="name"
-              placeholder="Type here"
+              placeholder="Type here" 
+              defaultValue={user?.displayName || ""}  
+              readOnly 
               className="input input-bordered w-full"
             />
             <div className="label"></div>
@@ -73,7 +83,9 @@ const AddCraftItem = () => {
             <input
               type="email"
               name="email"
-              placeholder="Type here"
+              placeholder="Type here" 
+              defaultValue={user?.email || ""} 
+              readOnly  
               className="input input-bordered w-full"
             />
             <div className="label"></div>

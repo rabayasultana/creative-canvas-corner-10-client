@@ -71,14 +71,28 @@ const Register = () => {
       .then(result => {
           setSuccess('User Created Successfully');
           toast('User Created Successfully');
+        console.log(result)
+          const user = {email};
+          fetch('http://localhost:5000/user',{
+              method: 'POST',
+              headers: {
+                  'content-type': 'application/json'
+              },
+              body: JSON.stringify(user)
+          })
+          .then(res => res.json())
+          .then(data => {
+              console.log(data);
+          })
           if(result.user){
+           
             setTimeout(() => navigate(from), 1000);
         }
 
-          // Update display name and photoURL
-          const user = auth.currentUser;
-          if (user !== null){
-            updateProfile(user, {
+        //   Update display name and photoURL
+          const currentUser = auth.currentUser;
+          if (currentUser !== null){
+            updateProfile(currentUser, {
                 displayName: name,
                 photoURL: photo
             })
@@ -97,7 +111,6 @@ const Register = () => {
 
     return (
         <div className="">
-                <title>Wanderlust | Register</title>
 
             <ToastContainer/>
       <Navbar></Navbar>

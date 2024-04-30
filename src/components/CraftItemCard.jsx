@@ -24,7 +24,7 @@ const CraftItemCard = ({ craftItem }) => {
             <div className="badge badge-outline">stockStatus</div>
             <div className="badge badge-outline">{rating}</div>
             <div className="card-actions justify-end">
-          <Link>
+          <Link to={`craftItemDetails/${_id}`}>
             <button className="btn bg-[#8F3034] text-white">
               View Details
             </button>
