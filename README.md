@@ -6,6 +6,7 @@ Welcome to our website! This website aims to provide users with a comprehensive 
 https://assignment-10-painting.web.app/
 
 ## Features and Characteristics
+- *Layout*:Instantly grab your site visitors attention with a beautifully designed landing page template.
 - *Explore Various Accommodation Options*:Browse a diverse collection of handcrafted art and crafts.
 - *User-friendly Interface*: The website offers an intuitive and user-friendly interface for easy navigation and exploration of different properties.
 - *Dynamic Image Slider*: Experience stunning visuals with a dynamic image slider showcasing featured destinations and accommodations.
