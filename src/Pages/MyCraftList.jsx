@@ -9,23 +9,32 @@ const MyCraftList = () => {
   const { user } = useContext(AuthContext) || {};
   const [craftItems, setCraftItems] = useState([]);
   const [control, setControl] = useState([false]);
+  const [selectedFilter, setSelectedFilter] = useState("all");
 
   useEffect(() => {
     fetch(`http://localhost:5000/craftItem`)
       .then((res) => res.json())
       .then((data) => {
-        if (user) {
-          const filteredData = data.filter((item) => item.email === user.email);
-          console.log(filteredData);
-          setCraftItems(filteredData);
-        } else {
-          setCraftItems(data);
-        }
+        setCraftItems(data)
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [user, control]);
+  }, [control]);
+
+//   Filter
+const handleFilterChange = (event) => {
+    setSelectedFilter(event.target.value);
+  };
+
+  const filteredCraftItems = user
+    ? craftItems.filter((item) => item.email === user.email)
+    : craftItems; 
+
+  const displayedCraftItems =
+  selectedFilter === "all"
+    ? filteredCraftItems
+    : filteredCraftItems.filter((item) => item.customization === selectedFilter);
 
   // Delete
   const handleDelete = (id) => {
@@ -60,9 +69,22 @@ const MyCraftList = () => {
   return (
     <div>
       <Navbar></Navbar>
+
       <div className="m-16">
+      <div className="text-center justify-center">
+      <div className="mb-2">
+              <span className="label-text text-xl">Select based On customization</span>
+            </div>
+      <div className="dropdown mb-10 border p-2 text-[#8F3034] font-bold text-xl">
+            <select value={selectedFilter} onChange={handleFilterChange}>
+              <option value="all">All</option>
+              <option value="yes">Yes (Customizable)</option>
+              <option value="no">No (Not Customizable)</option>
+            </select>
+          </div>
+      </div>
         <div className="grid md:grid-cols-2 gap-4">
-          {craftItems?.map((craftItem) => (
+          {displayedCraftItems.map((craftItem) => (
             <div key={craftItem._id}>
               <div className="card bg-red-50 shadow-xl">
                 <figure>
