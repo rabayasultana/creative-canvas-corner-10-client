@@ -135,13 +135,16 @@ const UpdateCraftItem = () => {
             <div className="label">
               <span className="label-text">Stock Status</span>
             </div>
-            <input
-              type="text"
-              name="stockStatus"
-              placeholder="Type here" 
-              defaultValue={stockStatus}
-              className="input input-bordered w-full"
-            />
+             <select
+                className="input input-bordered w-full"
+                id=""
+                name="stockStatus" 
+                defaultValue={stockStatus}
+              >
+                <option value="">{stockStatus}</option>
+                <option value="yes">In stock</option>
+                <option value="no">Made to Order</option>
+              </select>
             <div className="label"></div>
           </label>
         </div>
@@ -152,13 +155,16 @@ const UpdateCraftItem = () => {
             <div className="label">
               <span className="label-text">Customization</span>
             </div>
-            <input
-              type="text"
-              name="customization"
-              placeholder="Type here" 
-              defaultValue={customization}
-              className="input input-bordered w-full"
-            />
+            <select
+                className="input input-bordered w-full"
+                id="customization"
+                name="customization" 
+                defaultValue={customization}
+              >
+                <option value="">{customization}</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
             <div className="label"></div>
           </label>
 
