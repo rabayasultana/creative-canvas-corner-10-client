@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../components/AuthProvider";
-import CraftItemCard from "../components/CraftItemCard";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyCraftList = () => {
     const { user } = useContext(AuthContext) || {};
     const [craftItems, setCraftItems] = useState([]); 
+    const [control, setControl] = useState([false]); 
     // console.log(user)
 
     useEffect(() => {
@@ -24,9 +25,40 @@ const MyCraftList = () => {
           .catch(error => {
             console.error(error);
           });
-      }, [user]);
+      }, [user, control]);
       
+// Delete
+const handleDelete = (id) => {
 
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+fetch(`http://localhost:5000/delete/${id}`,{
+    method:"DELETE",
+
+})
+.then((res) => res.json())
+.then((data) => {
+    if(data.deletedCount > 0){
+        Swal.fire(
+            'Deleted!',
+            'Your Craft Item has been deleted.',
+            'success'
+        )
+        setControl(!control)
+    }
+})
+        }
+    })
+}
 
   return (
     <div>
@@ -52,14 +84,13 @@ const MyCraftList = () => {
     <div className="card-actions justify-between">
         <Link to={`/updateCraftItem/${craftItem._id}`}><button className="btn bg-[#8F3034] text-white">Update</button></Link>
     
-      <button className="btn bg-[#8F3034] text-white">Delete</button>
+      <button onClick={() => handleDelete(craftItem._id)} className="btn bg-[#8F3034] text-white">Delete</button>
     </div>
   </div>
 </div>
           </div>
         ))
 
-    // craftItems.map(craftItem => <CraftItemCard key={craftItem._id} craftItem ={craftItem}></CraftItemCard>)
       }
     </div>
       </div>
