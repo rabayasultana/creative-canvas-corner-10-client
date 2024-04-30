@@ -13,6 +13,7 @@ import Register from "../Pages/Register.jsx";
 import PrivateRoute from "./PrivateRoutes.jsx";
 import CraftItemDetails from "../Pages/CraftItemDetails.jsx";
 import Contact from "../Pages/Contact.jsx";
+import CategoryForm from "../Pages/CategoryForm.jsx";
   
   const router = createBrowserRouter([
   
@@ -62,7 +63,11 @@ import Contact from "../Pages/Contact.jsx";
     {
       path: "/contact",
       element: <Contact></Contact>
-    }
+    },
+    {
+        path: "/categoryForm",
+        element: <CategoryForm></CategoryForm>
+      }
   ]
 },
   ]);

@@ -95,7 +95,6 @@ const AddCraftItem = () => {
                 name="email"
                 placeholder="Type here"
                 defaultValue={user?.email || ""}
-                readOnly
                 className="input input-bordered w-full"
               />
               <div className="label"></div>
